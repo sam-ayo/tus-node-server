@@ -58,10 +58,7 @@ export class AzureStore extends DataStore {
       ? options.credential
       : new StorageSharedKeyCredential(options.account, options.accountKey!)
 
-    this.blobServiceClient = new BlobServiceClient(
-      storageAccountBaseUrl,
-      credential
-    )
+    this.blobServiceClient = new BlobServiceClient(storageAccountBaseUrl, credential)
     this.containerClient = this.blobServiceClient.getContainerClient(
       options.containerName
     )

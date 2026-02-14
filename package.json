@@ -1,26 +1,38 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "private": true,
+  "name": "@tus/azure-store",
+  "version": "2.0.0",
+  "description": "Azure blob storage for @tus/server",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
   "type": "module",
-  "workspaces": [
-    "packages/*",
-    "test"
+  "homepage": "https://github.com/tus/tus-node-server#readme",
+  "bugs": "https://github.com/tus/tus-node-server/issues",
+  "repository": "tus/tus-node-server",
+  "files": [
+    "dist",
+    "src",
+    "!test*"
   ],
+  "license": "MIT",
   "scripts": {
     "build": "tsc --build",
-    "lint": "biome lint --write .",
-    "format": "biome format --write .",
-    "format:check": "biome format --error-on-warnings .",
     "pretest": "tsc --build",
-    "test": "npm test -w ./packages",
-    "version": "changeset version && npm install",
-    "release": "gh workflow run release",
-    "release:local": "npm run build && changeset publish"
+    "test": "mocha './dist/test/*.js' --exit"
+  },
+  "dependencies": {
+    "@tus/utils": "^0.6.0",
+    "@azure/storage-blob": "^12.24.0",
+    "debug": "^4.3.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.29.2",
-    "typescript": "^5.8.2"
+    "@types/debug": "^4.1.12",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^22.13.7",
+    "mocha": "^11.0.1",
+    "should": "^13.2.3"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }
